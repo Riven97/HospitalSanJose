@@ -1,6 +1,7 @@
 package HospitalSanJose.model;
 
 import java.util.Date;
+import java.util.List;
 
 /**
  * @author DOSSA0110
@@ -28,20 +29,21 @@ public class Nomina {
     private double totalNomina;
 
     /**
+     * Atributo para llamar la lista de empleados
+     */
+    private List<Empleado> empleados;
+
+    /**
      * Contructor para inicializar los atributos
      */
-    public Nomina() {
-        this.id = 0;
-        this.fecha = new Date();
-        this.totalNomina = 0;
-    }
-
-    public Nomina(double id, Date fecha, double totalNomina) {
+    public Nomina(double id, Date fecha, double totalNomina, List<Empleado> empleados) {
         this.id = id;
         this.fecha = fecha;
         this.totalNomina = totalNomina;
     }
 
+    ///////////////////////////////////////////////////////////////////////////
+    //Metodos de acceso
     public double getId() {
         return id;
     }
@@ -66,6 +68,22 @@ public class Nomina {
         this.totalNomina = totalNomina;
     }
 
-    
-    
+    public void setEmpleados(List<Empleado> empleados) {
+        this.empleados = empleados;
+    }
+
+    ///////////////////////////////////////////////////////////////////////////
+    //Metodos
+    /**
+     * Metodo para calcular todos lo salarios
+     *
+     * @return
+     */
+    public double calcularTotalSalarios() {
+        double totalSalarios = 0;
+        for (Empleado empleado : empleados) {
+            totalSalarios += empleado.calcularSalario();
+        }
+        return totalSalarios;
+    }
 }

@@ -8,24 +8,6 @@ package HospitalSanJose.model;
  */
 public class Farmacia {
 
-    /**
-     * Nomrbe del medicamento
-     */
-    private String nombre;
-
-    /**
-     * descripcion del medicamento
-     */
-    private String descripcion;
-
-    /**
-     * costo neto del medicamento
-     */
-    private double costo;
-
-    /*
-    *Precio de venta al publico del medicamento
-     */
-    private double precioVenta;
+    private Inventario inventario;
 
 }

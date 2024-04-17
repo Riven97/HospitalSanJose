@@ -28,7 +28,7 @@ public abstract class Empleado {
     /**
      * Salario base del empleado
      */
-    private double salarioBase;
+    protected double salarioBase;
 
     /**
      * Metodo construtor para inicializar los atributos
@@ -81,4 +81,10 @@ public abstract class Empleado {
         this.salarioBase = salarioBase;
     }
 
+    //////////////////////////////////////////////////////////////////////////
+    //Metodo
+    
+       public abstract double calcularSalario();
+       
+    
 }

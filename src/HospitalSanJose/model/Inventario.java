@@ -19,22 +19,22 @@ public class Inventario {
     /**
      * Guarda y muestra informacion en cada una de la variables
      */
-    public ArrayList<Medicamento> getProductos() {
+    public ArrayList<Medicamento> getMedicamentos() {
         return medicamentos;
     }
 
-    // Metodos de gestion de productos o CRUD de productos 
+    // Metodos de gestion de medicamentos o CRUD de medicamentos 
     /**
-     * recibe un pruducto como parametro y lo agrega y lo agrega a el ArrayList
+     * recibe un medicamento como parametro y lo agrega y lo agrega a el ArrayList
      */
     public boolean agregarMedicamento(Medicamento medicamentos) {
         return this.medicamentos.add(medicamentos);
     }
 
     /**
-     * Buscamos el producto por medio del producto
+     * Buscamos el medicamento por medio del medicamento
      */
-    public Medicamento buscarProducto(Medicamento medicamentos) {
+    public Medicamento buscarMedicamento(Medicamento medicamentos) {
         for (int i = 0; i < this.medicamentos.size(); i++) {
             Medicamento p = this.medicamentos.get(i);
             if (p.equals(medicamentos)) {
@@ -45,9 +45,9 @@ public class Inventario {
     }
 
     /**
-     * Buscamos el producto por medio de el id del producto
+     * Buscamos el medicamento por medio de el id del medicamento
      */
-    public Medicamento buscarProducto(long id) {
+    public Medicamento buscarMedicamento (long id) {
         for (int i = 0; i < this.medicamentos.size(); i++) {
             Medicamento p = this.medicamentos.get(i);
             if (p.getId() == id) {
@@ -68,7 +68,7 @@ public class Inventario {
     }
 
     /**
-     * Con el id encontrado se accede a el producto y se actualizan algunos
+     * Con el id encontrado se accede a el medicamento y se actualizan algunos
      * datos
      */
     public Medicamento actualizarProducto(long id, Medicamento medicamentos) {
@@ -81,9 +81,9 @@ public class Inventario {
     }
 
     /**
-     * Con el id encontrado se accede a la lista y se elimina el producto
+     * Con el id encontrado se accede a la lista y se elimina el medicamento
      */
-    public Medicamento eliminarProducto(long id) {
+    public Medicamento eliminarMedicamento(long id) {
         int index = this.buscarIndiceMedicamento(id);
         if (index >= 0) {
             return this.medicamentos.remove(index);

@@ -1,4 +1,3 @@
-
 package HospitalSanJose.model;
 
 /**
@@ -8,53 +7,40 @@ package HospitalSanJose.model;
  * @since 2024/15/01
  */
 public class MedicamentoMarca extends Medicamento {
-        ///////////////////////////////////////////////////////////////////////////
+
+    ///////////////////////////////////////////////////////////////////////////
     //Atributos
-    /**
-     * Año de actualizacion del medicamento
-     */
-    private int añoActualizacion;
+    private String fabricante;
 
     /**
-     * Codigo del medicamento
-     */
-    private int codigo;
-
-    /**
-     * Constructor para inicializar los atributos
+     * Metodo constrcutor del atributo propio
      */
     public MedicamentoMarca() {
-
-        this.añoActualizacion = 0;
-        this.codigo = 0;
-
+        this.fabricante = "";
     }
 
-    public MedicamentoMarca(int añoActualizacion, int codigo) {
-
-        this.añoActualizacion = añoActualizacion;
-        this.codigo = codigo;
-
+    /**
+     * Metodo constrcutor heredado
+     *
+     * @param id
+     * @param nombre
+     * @param descripcion
+     * @param costo
+     * @param precioVenta
+     * @param fabricante
+     */
+    public MedicamentoMarca(int id, String nombre, String descripcion,
+            double costo, double precioVenta, String fabricante) {
+        super(id, nombre, descripcion, costo, precioVenta);
+        this.fabricante = fabricante;
     }
 
-    //////////////////////////////////////////////////////////////////////////
-    //Metodos de acceso
-    public int getAñoActualizacion() {
-        return añoActualizacion;
+    public String getFabricante() {
+        return fabricante;
     }
 
-    public void setAñoActualizacion(int añoActualizacion) {
-        this.añoActualizacion = añoActualizacion;
+    public void setFabricante(String fabricante) {
+        this.fabricante = fabricante;
     }
 
-    public int getCodigo() {
-        return codigo;
-    }
-
-    public void setCodigo(int codigo) {
-        this.codigo = codigo;
-    }
-
-////////////////////////////////////////////////////////////////////////////
-//Metodos
 }
