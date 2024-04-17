@@ -12,10 +12,12 @@ public class DemoHospital {
 
     public static void main(String[] args) {
 
-        String archivo = "F:\\Descargas\\POO\\NuevoPOO\\HospitalSanJose\\HospitalSanJose";
+        String pathArchivo = "F:/Descargas/POO/NuevoPOO/HospitalSanJose/HospitalSanJose";
 
         AdministradorGerente ag = new AdministradorGerente();
-        ag.crearArchivo(archivo);
+        ag.eliminarArchivo(pathArchivo);
+        ag.crearArchivo(pathArchivo);
+        ag.escribirArchivoTexto();
 
     }
 
