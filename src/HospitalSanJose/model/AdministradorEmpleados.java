@@ -20,11 +20,9 @@ public class AdministradorEmpleados {
      * constructor
      */
     public AdministradorEmpleados() {
-
         this.empleados = new ArrayList<>();
         empleados.add(empleadoOperativo1);
         empleados.add(empleadoSalud1);
-
     }
 
     /**
