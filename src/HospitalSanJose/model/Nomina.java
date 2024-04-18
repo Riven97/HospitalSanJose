@@ -86,4 +86,14 @@ public class Nomina {
         }
         return totalSalarios;
     }
+    public boolean presupuestoHospital (){
+        Hospital hospital = new Hospital();
+        double presupuesto = hospital.getPresupuesto() - this.calcularTotalSalarios();
+        if(presupuesto <= 0){
+            return false;
+        }else{
+            return true;
+        }
+    }
+    
 }
