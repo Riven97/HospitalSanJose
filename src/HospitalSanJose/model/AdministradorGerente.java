@@ -1,8 +1,7 @@
 package HospitalSanJose.model;
 
 import java.io.*;
-
-
+import java.util.ArrayList;
 
 /**
  * @author DOSSA0110
@@ -11,48 +10,38 @@ import java.io.*;
  * @since 2024/15/01
  */
 public class AdministradorGerente {
-    
-    File archivo;
 
-    public void crearArchivo(String archivo, String nombreArchivo) {
-         this.archivo  = new File(archivo, nombreArchivo);
-        try {
-       
-            if(this.archivo.createNewFile()){
-                System.out.println("archivo creado");
-            }else{
-                System.out.println("Error al crear archivo");
-            }
-       
-        } catch (IOException e) {
-            System.out.println("ERROR: "+ e.getMessage());
-        }
+    /**
+     * Atributo tipo gerente
+     */
+    private ArrayList<Gerente> gerentes;
+
+    /**
+     * constructor del mismo
+     */
+    public AdministradorGerente() {
+        this.gerentes = new ArrayList<>();
     }
-    
-    public void escribirArchivoTexto(String texto){
-            try{
-                System.out.println("voy a escribir en el archivo");
-                FileWriter escritor = new FileWriter(this.archivo);
-                escritor.write(texto);
-                escritor.close();
-            }catch(IOException e){
-                System.out.println("Error en el metodo escribirArchivo: "+ e.getMessage());
-            }
+
+    ///////////////////////////////////////////////////////////////////////////
+    //Metodos de acceso
+    public void setGerentes(ArrayList<Gerente> gerentes) {
+        this.gerentes = gerentes;
     }
-    
-    public void eliminarArchivo(String archivo) {
-         this.archivo  = new File(archivo, "archivo.txt");
-        try {
-       
-            if(this.archivo.delete()){
-                System.out.println("archivo eliminado");
-            }else{
-                System.out.println("Error al crear archivo");
-            }
-       
-        } catch (Exception e) {
-            System.out.println("ERROR: "+ e.getMessage());
-        }
+
+    public ArrayList<Gerente> getGerentes() {
+        return gerentes;
+    }
+
+    ///////////////////////////////////////////////////////////////////////////
+    //Metodos
+    /**
+     * recibe un gerente como parametro y lo agrega y lo agrega
+     *
+     * @param gerentes
+     */
+    public boolean agregarGerente(Gerente gerentes) {
+        return this.gerentes.add(gerentes);
     }
 
 }

@@ -14,12 +14,23 @@ public class AdministradorEmpleados {
     //Atributo
     private ArrayList<Empleado> empleados;
 
+    /**
+     * constructor
+     */
     public AdministradorEmpleados() {
         this.empleados = new ArrayList<>();
     }
 
+    /**
+     * Metodo de acceso
+     * @return 
+     */
     public ArrayList<Empleado> getEmpleados() {
         return empleados;
+    }
+
+    public void setEmpleados(ArrayList<Empleado> empleados) {
+        this.empleados = empleados;
     }
 
     // Metodos de gestion de productos o CRUD de productos 

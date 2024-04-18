@@ -1,6 +1,7 @@
 package HospitalSanJose.main;
 
 import HospitalSanJose.model.AdministradorGerente;
+import HospitalSanJose.model.AdministradorArchivos;
 
 /**
  * @author DOSSA0110
@@ -14,28 +15,24 @@ public class DemoHospital {
 
         String pathArchivo = "F:/Descargas/POO/NuevoPOO/HospitalSanJose/HospitalSanJose";
 
-        AdministradorGerente ag = new AdministradorGerente();
+        AdministradorArchivos ag = new AdministradorArchivos();
         ag.eliminarArchivo(pathArchivo);
         ag.crearArchivo(pathArchivo, "administradorGerenteDatos.txt");
         ag.escribirArchivoTexto("N,123,");
-        String[] infoArchivo =  {"Sanjose,VillaCafe,5555","gerente,13,asd"};
-        
-        for(String info : infoArchivo){
-            System.out.println("informacionArreglo: "+ info);
+        String[] infoArchivo = {"Sanjose,VillaCafe,5555", "gerente,13,asd"};
+
+        for (String info : infoArchivo) {
+            System.out.println("informacionArreglo: " + info);
         }
-        String informacionHospital =  infoArchivo[0];
-        System.out.println("info seleccionada: "+informacionHospital);
-        
+        String informacionHospital = infoArchivo[0];
+        System.out.println("info seleccionada: " + informacionHospital);
+
         String[] infoSeparada = informacionHospital.split(",");
-        
-        for(String separada : infoSeparada){
-            System.out.println("informacionArreglo: "+ separada);
+
+        for (String separada : infoSeparada) {
+            System.out.println("informacionArreglo: " + separada);
         }
-        System.out.println("nombre "+infoSeparada[1]);
-        
-        
-        
-                
+        System.out.println("nombre " + infoSeparada[1]);
 
     }
 
