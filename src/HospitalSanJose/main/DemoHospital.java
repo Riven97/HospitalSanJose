@@ -16,8 +16,26 @@ public class DemoHospital {
 
         AdministradorGerente ag = new AdministradorGerente();
         ag.eliminarArchivo(pathArchivo);
-        ag.crearArchivo(pathArchivo);
-        ag.escribirArchivoTexto();
+        ag.crearArchivo(pathArchivo, "administradorGerenteDatos.txt");
+        ag.escribirArchivoTexto("N,123,");
+        String[] infoArchivo =  {"Sanjose,VillaCafe,5555","gerente,13,asd"};
+        
+        for(String info : infoArchivo){
+            System.out.println("informacionArreglo: "+ info);
+        }
+        String informacionHospital =  infoArchivo[0];
+        System.out.println("info seleccionada: "+informacionHospital);
+        
+        String[] infoSeparada = informacionHospital.split(",");
+        
+        for(String separada : infoSeparada){
+            System.out.println("informacionArreglo: "+ separada);
+        }
+        System.out.println("nombre "+infoSeparada[1]);
+        
+        
+        
+                
 
     }
 

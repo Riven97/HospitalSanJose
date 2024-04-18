@@ -14,8 +14,8 @@ public class AdministradorGerente {
     
     File archivo;
 
-    public void crearArchivo(String archivo) {
-         this.archivo  = new File(archivo, "archivo.txt");
+    public void crearArchivo(String archivo, String nombreArchivo) {
+         this.archivo  = new File(archivo, nombreArchivo);
         try {
        
             if(this.archivo.createNewFile()){
@@ -29,11 +29,11 @@ public class AdministradorGerente {
         }
     }
     
-    public void escribirArchivoTexto(){
+    public void escribirArchivoTexto(String texto){
             try{
                 System.out.println("voy a escribir en el archivo");
                 FileWriter escritor = new FileWriter(this.archivo);
-                escritor.write("hola  mundo");
+                escritor.write(texto);
                 escritor.close();
             }catch(IOException e){
                 System.out.println("Error en el metodo escribirArchivo: "+ e.getMessage());
