@@ -16,7 +16,7 @@ public class EmpleadoSalud extends Empleado {
      */
     public EmpleadoSalud() {
         this.especialidad = "";
-        this.horasTrabajadas = 0;
+        this.horasTrabajadas = 3;
     }
 
     /**

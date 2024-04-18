@@ -41,6 +41,7 @@ public class Nomina {
         this.id = id;
         this.fecha = fecha;
         this.totalNomina = totalNomina;
+        this.empleados = empleados;
     }
 
     public Nomina(double id, String fecha, double totalNomina, ArrayList<Empleado> empleados) {
@@ -87,24 +88,22 @@ public class Nomina {
      *
      * @return
      */
-    public double calcularTotalSalarios() {
-        double totalSalarios = 0;
-        for (Empleado empleado : empleados) {
-            totalSalarios += empleado.calcularSalario();
+    public double calcularTotalSalarios(EmpleadoSalud salarioSalud, EmpleadoOperativo salarioOperativo) {
+        double totalSalarios = salarioSalud.calcularSalario() + salarioOperativo.calcularSalario();
 
-        }
-        System.out.println("total" + totalSalarios);
         return totalSalarios;
-
     }
-    public boolean presupuestoHospital (){
+
+    public boolean presupuestoHospital() {
         Hospital hospital = new Hospital();
-        double presupuesto = hospital.getPresupuesto() - this.calcularTotalSalarios();
-        if(presupuesto <= 0){
+        EmpleadoSalud empleadoSalud = new EmpleadoSalud();
+        EmpleadoOperativo empleadoOperativo = new EmpleadoOperativo();
+        double presupuesto = hospital.getPresupuesto() - this.calcularTotalSalarios(empleadoSalud, empleadoOperativo);
+        if (presupuesto <= 0) {
             return false;
-        }else{
+        } else {
             return true;
         }
     }
-    
+
 }
