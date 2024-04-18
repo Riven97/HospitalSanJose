@@ -22,8 +22,7 @@ public class AdministradorEmpleados {
     public AdministradorEmpleados() {
 
         this.empleados = new ArrayList<>();
-        empleados.add(empleadoOperativo1);
-        empleados.add(empleadoSalud1);
+      
 
     }
 
@@ -32,6 +31,26 @@ public class AdministradorEmpleados {
      *
      * @return
      */
+    public EmpleadoSalud getEmpleadoSalud1() {
+        return empleadoSalud1;
+    }
+
+    public void setEmpleadoSalud1(EmpleadoSalud empleadoSalud1) {
+        this.empleadoSalud1 = empleadoSalud1;
+    }
+
+    public EmpleadoOperativo getEmpleadoOperativo1() {
+        return empleadoOperativo1;
+    }
+
+    public void setEmpleadoOperativo1(EmpleadoOperativo empleadoOperativo1) {
+        this.empleadoOperativo1 = empleadoOperativo1;
+    }
+
+    public AdministradorEmpleados(ArrayList<Empleado> empleados) {
+        this.empleados = empleados;
+    }
+
     public ArrayList<Empleado> getEmpleados() {
         return empleados;
     }

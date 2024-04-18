@@ -41,6 +41,7 @@ public class Nomina {
         this.id = id;
         this.fecha = fecha;
         this.totalNomina = totalNomina;
+        this.empleados = empleados;
     }
 
     public Nomina(double id, String fecha, double totalNomina, ArrayList<Empleado> empleados) {
@@ -87,14 +88,9 @@ public class Nomina {
      *
      * @return
      */
-    public double calcularTotalSalarios() {
-        double totalSalarios = 0;
-        for (Empleado empleado : empleados) {
-            totalSalarios += empleado.calcularSalario();
+    public double calcularTotalSalarios(EmpleadoSalud salarioSalud, EmpleadoOperativo salarioOperativo) {
+        double totalSalarios = salarioSalud.calcularSalario() + salarioOperativo.calcularSalario();
 
-        }
-        System.out.println("total" + totalSalarios);
         return totalSalarios;
-
     }
 }
