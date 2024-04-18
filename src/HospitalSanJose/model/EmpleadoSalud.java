@@ -50,7 +50,8 @@ public class EmpleadoSalud extends Empleado {
         // Calcula el salario multiplicando el 1.2% del salario base por el número de horas trabajadas
         double salarioPorHoras = porcentajeSalarioBase * horasTrabajadas;
         // Retorna el salario total sumando el salario por horas al salario base
-        return salarioBase + salarioPorHoras;
+        double totalSalarioSalud = salarioBase + salarioPorHoras;
+        return totalSalarioSalud;
     }
 
 }

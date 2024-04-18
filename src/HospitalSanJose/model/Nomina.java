@@ -1,5 +1,6 @@
 package HospitalSanJose.model;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -21,7 +22,7 @@ public class Nomina {
     /**
      * Fecha de ingreso nomina
      */
-    private Date fecha;
+    private String fecha;
 
     /**
      * Total de la nomina
@@ -31,15 +32,22 @@ public class Nomina {
     /**
      * Atributo para llamar la lista de empleados
      */
-    private List<Empleado> empleados;
+    private ArrayList<Empleado> empleados;
 
     /**
      * Contructor para inicializar los atributos
      */
-    public Nomina(double id, Date fecha, double totalNomina, List<Empleado> empleados) {
+    public Nomina() {
         this.id = id;
         this.fecha = fecha;
         this.totalNomina = totalNomina;
+    }
+
+    public Nomina(double id, String fecha, double totalNomina, ArrayList<Empleado> empleados) {
+        this.id = id;
+        this.fecha = fecha;
+        this.totalNomina = totalNomina;
+        this.empleados = empleados;
     }
 
     ///////////////////////////////////////////////////////////////////////////
@@ -52,11 +60,11 @@ public class Nomina {
         this.id = id;
     }
 
-    public Date getFecha() {
+    public String getFecha() {
         return fecha;
     }
 
-    public void setFecha(Date fecha) {
+    public void setFecha(String fecha) {
         this.fecha = fecha;
     }
 
@@ -68,7 +76,7 @@ public class Nomina {
         this.totalNomina = totalNomina;
     }
 
-    public void setEmpleados(List<Empleado> empleados) {
+    public void setEmpleados(ArrayList<Empleado> empleados) {
         this.empleados = empleados;
     }
 
@@ -83,8 +91,11 @@ public class Nomina {
         double totalSalarios = 0;
         for (Empleado empleado : empleados) {
             totalSalarios += empleado.calcularSalario();
+
         }
+        System.out.println("total" + totalSalarios);
         return totalSalarios;
+
     }
     public boolean presupuestoHospital (){
         Hospital hospital = new Hospital();

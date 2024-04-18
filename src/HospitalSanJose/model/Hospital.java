@@ -10,6 +10,7 @@ import java.util.Date;
  */
 public class Hospital {
 
+   
     /**
      * Nombre del hospital
      */
@@ -53,7 +54,7 @@ public class Hospital {
     /**
      * Localizacion del hospital (longitud - latitud)
      */
-    private Localizacion localizacion;
+    Localizacion localizacion;
 
     /**
      * Gerente del hospital
@@ -77,6 +78,7 @@ public class Hospital {
         this.estado = true;
         this.localizacion = localizacion;
         this.gerente = gerente;
+     
     }
 
     public Hospital(String nombre, String direccion, String telefono, String logo,
@@ -92,6 +94,7 @@ public class Hospital {
         this.estado = estado;
         this.localizacion = localizacion;
         this.gerente = gerente;
+ 
     }
 
     public String getNombre() {
@@ -178,16 +181,16 @@ public class Hospital {
     }
 
     ///////////////////////////////////////////////////////////////////////////
+
     //Metodos    
     
     public void generarNomina (){
         Nomina nomina = new Nomina();
-        if (nomina.presupuestoHospital()= false){
+        if (nomina.presupuestoHospital() == false){
             this.setEstado(false);
         }else{
             this.setEstado(true);
-        }
-            
+        } 
     }
     
 }
