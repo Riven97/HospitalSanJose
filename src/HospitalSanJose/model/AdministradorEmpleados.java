@@ -12,18 +12,25 @@ public class AdministradorEmpleados {
 
     ///////////////////////////////////////////////////////////////////////////
     //Atributo
+    EmpleadoSalud empleadoSalud1 = new EmpleadoSalud();
+    EmpleadoOperativo empleadoOperativo1 = new EmpleadoOperativo();
     private ArrayList<Empleado> empleados;
 
     /**
      * constructor
      */
     public AdministradorEmpleados() {
+
         this.empleados = new ArrayList<>();
+        empleados.add(empleadoOperativo1);
+        empleados.add(empleadoSalud1);
+
     }
 
     /**
      * Metodo de acceso
-     * @return 
+     *
+     * @return
      */
     public ArrayList<Empleado> getEmpleados() {
         return empleados;
@@ -40,6 +47,7 @@ public class AdministradorEmpleados {
      * @param empleados
      */
     public boolean agregarEmpleado(Empleado empleados) {
+
         return this.empleados.add(empleados);
     }
 

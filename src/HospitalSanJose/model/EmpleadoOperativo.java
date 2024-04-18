@@ -24,11 +24,12 @@ public class EmpleadoOperativo extends Empleado {
 
     /**
      * Metodos constrcutor heredado
+     *
      * @param nombre
      * @param numeroDocumento
      * @param edad
      * @param salarioBase
-     * @param areaTrabajo 
+     * @param areaTrabajo
      */
     public EmpleadoOperativo(String nombre, String numeroDocumento,
             int edad, double salarioBase, String areaTrabajo) {
@@ -45,14 +46,15 @@ public class EmpleadoOperativo extends Empleado {
     public void setAreaTrabajo(String areaTrabajo) {
         this.areaTrabajo = areaTrabajo;
     }
-    
+
     /**
      * Metodo para calcular el salario
-     * @return 
+     *
+     * @return
      */
     @Override
-   public double calcularSalario() {
-        // Calcula el salario sumando el 20% al salario base
-        return salarioBase * 1.20;
+    public double calcularSalario() {
+        double totalSalarioOperario = salarioBase * 1.20;
+        return totalSalarioOperario;
     }
 }

@@ -2,6 +2,7 @@ package HospitalSanJose.main;
 
 import HospitalSanJose.model.AdministradorGerente;
 import HospitalSanJose.model.AdministradorArchivos;
+import HospitalSanJose.model.Hospital;
 
 /**
  * @author DOSSA0110
@@ -15,7 +16,7 @@ public class DemoHospital {
 
         String pathArchivo = "F:/Descargas/POO/NuevoPOO/HospitalSanJose/HospitalSanJose";
 
-        AdministradorGerente ag = new AdministradorGerente();
+        Hospital hospital = new Hospital();
         
         //ag.actualizarGerente("1","2","2","2");
         
