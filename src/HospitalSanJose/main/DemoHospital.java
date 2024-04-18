@@ -23,8 +23,9 @@ public class DemoHospital {
         EmpleadoOperativo salario2 = new EmpleadoOperativo();
         Nomina n1 = new Nomina();
         double salarioTotal = n1.calcularTotalSalarios(salario, salario2);
+        boolean estadoHospital = n1.presupuestoHospital();
 
-        System.out.println("total: " + salarioTotal);
+        System.out.println("total: " + salarioTotal+"estado hospital: "+estadoHospital);
         //String pathArchivo = "F:/Descargas/POO/NuevoPOO/HospitalSanJose/HospitalSanJose";
 
         //Hospital hospital = new Hospital();
