@@ -1,4 +1,4 @@
-package HospitalSanJose.model;
+    package HospitalSanJose.model;
 
 /**
  * @author DOSSA0110

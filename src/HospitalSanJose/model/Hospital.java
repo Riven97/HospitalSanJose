@@ -156,6 +156,9 @@ public class Hospital {
     public boolean isEstado() {
         return estado;
     }
+    public boolean getEstado(){
+        return estado;
+    }
 
     public void setEstado(boolean estado) {
         this.estado = estado;
@@ -178,6 +181,16 @@ public class Hospital {
     }
 
     ///////////////////////////////////////////////////////////////////////////
-    //Metodos
+
+    //Metodos    
+    
+    public void generarNomina (){
+        Nomina nomina = new Nomina();
+        if (nomina.presupuestoHospital() == false){
+            this.setEstado(false);
+        }else{
+            this.setEstado(true);
+        } 
+    }
     
 }
