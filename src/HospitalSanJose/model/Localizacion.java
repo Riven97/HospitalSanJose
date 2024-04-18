@@ -24,8 +24,8 @@ public class Localizacion {
      * Contructor para inicializar los atributos
      */
     public Localizacion() {
-        this.longitud = 0;
-        this.latitud = 0;
+        this.longitud = 37.25157313140872;
+        this.latitud = -121.94667417922749;
     }
 
     public Localizacion(double longitud, double latitud) {

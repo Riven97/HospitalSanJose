@@ -23,7 +23,7 @@ public class Gerente {
     /**
      * Edad del gerente
      */
-    private int edad;
+    private String edad;
 
     /**
      * Titulo de la carrera del gerente
@@ -34,20 +34,19 @@ public class Gerente {
      * Contructor para inicializar los atributos
      */
     public Gerente() {
-        this.nombre = "";
-        this.numeroDocumento = "";
-        this.edad = 0;
-        this.carrera = "";
+        this.nombre = "Aaron Glassman";
+        this.numeroDocumento = "84.941.564";
+        this.edad = "69";
+        this.carrera = "Neurocirujano";
     }
 
-    public Gerente(String nombre, String numeroDocumento, int edad, String carrera) {
+    public Gerente(String nombre, String numeroDocumento, String edad, String carrera) {
         this.nombre = nombre;
         this.numeroDocumento = numeroDocumento;
         this.edad = edad;
         this.carrera = carrera;
     }
 
-    
     ///////////////////////////////////////////////////////////////////////////
     //Mertodos de acceso
     public String getNombre() {
@@ -66,11 +65,11 @@ public class Gerente {
         this.numeroDocumento = numeroDocumento;
     }
 
-    public int getEdad() {
+    public String getEdad() {
         return edad;
     }
 
-    public void setEdad(int edad) {
+    public void setEdad(String edad) {
         this.edad = edad;
     }
 
@@ -82,6 +81,4 @@ public class Gerente {
         this.carrera = carrera;
     }
 
-    
-    
 }

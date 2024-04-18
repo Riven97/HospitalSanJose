@@ -43,7 +43,7 @@ public class Hospital {
     /**
      * Fecha de la fundacion del hospital
      */
-    private Date fechaFundacion;
+    private String fechaFundacion;
 
     /**
      * Estado del hospital (True =activo o False = en quiebra)
@@ -65,20 +65,22 @@ public class Hospital {
      * Inicializo cada uno de los atributos anteriores
      */
     public Hospital() {
-        this.nombre = "";
-        this.direccion = "";
-        this.telefono = "";
-        this.logo = "";
-        this.presupuesto = 0;
+        this.nombre = "Hospital San Jose St. Bonaventure";
+        this.direccion = "2425 Samaritan Dr, San Jose, CA 95124,\n"
+                + "\n"
+                + "Estados Unidos";
+        this.telefono = "+1 408-559-2011";
+        this.logo = "F:\\Descargas\\POO\\NuevoPOO\\HospitalSanJose\\HospitalSanJose\\logo.png";
+        this.presupuesto = 1000000;
         this.metaVentasAnual = 0;
-        this.fechaFundacion = new Date();
+        this.fechaFundacion = "1965";
         this.estado = true;
         this.localizacion = localizacion;
         this.gerente = gerente;
     }
 
     public Hospital(String nombre, String direccion, String telefono, String logo,
-            double presupuesto, double metaVentasAnual, Date fechaFundacion,
+            double presupuesto, double metaVentasAnual, String fechaFundacion,
             boolean estado, Localizacion localizacion, Gerente gerente) {
         this.nombre = nombre;
         this.direccion = direccion;
@@ -140,11 +142,11 @@ public class Hospital {
         this.metaVentasAnual = metaVentasAnual;
     }
 
-    public Date getFechaFundacion() {
+    public String getFechaFundacion() {
         return fechaFundacion;
     }
 
-    public void setFechaFundacion(Date fechaFundacion) {
+    public void setFechaFundacion(String fechaFundacion) {
         this.fechaFundacion = fechaFundacion;
     }
 
@@ -174,8 +176,4 @@ public class Hospital {
 
     ///////////////////////////////////////////////////////////////////////////
     //Metodos
-    
-    
-    
-    
 }

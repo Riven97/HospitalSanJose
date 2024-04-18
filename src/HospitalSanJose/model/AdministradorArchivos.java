@@ -2,7 +2,6 @@ package HospitalSanJose.model;
 
 import java.io.*;
 
-
 /**
  * @author DOSSA0110
  * @author Riven97
@@ -13,14 +12,14 @@ public class AdministradorArchivos {
 
     File archivo;
 
-    public void crearArchivo(String archivo, String nombreArchivo) {
-        this.archivo = new File(archivo, nombreArchivo);
+    public void crearArchivo(String ruta, String nombreArchivo) {
+        this.archivo = new File(ruta, nombreArchivo);
         try {
 
             if (this.archivo.createNewFile()) {
                 System.out.println("archivo creado");
             } else {
-                System.out.println("Error al crear archivo");
+                System.out.println("...");
             }
 
         } catch (IOException e) {
@@ -39,8 +38,8 @@ public class AdministradorArchivos {
         }
     }
 
-    public void eliminarArchivo(String archivo) {
-        this.archivo = new File(archivo, "archivo.txt");
+    public void eliminarArchivo(String ruta, String archivo) {
+        this.archivo = new File(ruta, archivo);
         try {
 
             if (this.archivo.delete()) {

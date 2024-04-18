@@ -101,11 +101,11 @@ public class AdministradorEmpleados {
     }
 
     /**
-     * mostrar inventario
+     * mostrar empleados
      *
      * @return
      */
-    public String mostrarInventario() {
+    public String mostrarLstaEmpleados() {
         String inventario = "";
         for (int i = 0; i < this.empleados.size(); i++) {
             Empleado p = this.empleados.get(i);
