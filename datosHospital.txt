@@ -1,3 +1,2 @@
 Hospital San Jose St. Bonaventure,2425 Samaritan Dr, San Jose, CA 95124,
-
 Estados Unidos,+1 408-559-2011,F:\Descargas\POO\NuevoPOO\HospitalSanJose\HospitalSanJose\logo.png,1000000.0,0.0,1965,-121.94667417922749,37.25157313140872,Aaron Glassman,84.941.564,69,Neurocirujano

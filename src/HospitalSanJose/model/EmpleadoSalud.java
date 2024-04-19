@@ -46,11 +46,12 @@ public class EmpleadoSalud extends Empleado {
     @Override
     public double calcularSalario() {
         // Calcula el 1.2% del salario base
-        double porcentajeSalarioBase = salarioBase * 0.012;
+        double porcentajeSalarioBase = (salarioBase * 0.012);
         // Calcula el salario multiplicando el 1.2% del salario base por el número de horas trabajadas
         double salarioPorHoras = porcentajeSalarioBase * horasTrabajadas;
         // Retorna el salario total sumando el salario por horas al salario base
-        double totalSalarioSalud = salarioBase + salarioPorHoras;
+        double totalSalarioSalud = (salarioBase + salarioPorHoras);
+        System.out.println("calculo salario empleado salud: "+totalSalarioSalud);
         return totalSalarioSalud;
     }
 

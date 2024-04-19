@@ -55,7 +55,7 @@ public class Hospital {
     /**
      * Localizacion del hospital (longitud - latitud)
      */
-    protected Localizacion localizacion;
+    private Localizacion localizacion;
 
     /**
      * Gerente del hospital
@@ -69,7 +69,6 @@ public class Hospital {
     public Hospital() {
         this.nombre = "Hospital San Jose St. Bonaventure";
         this.direccion = "2425 Samaritan Dr, San Jose, CA 95124,\n"
-                + "\n"
                 + "Estados Unidos";
         this.telefono = "+1 408-559-2011";
         this.logo = "F:\\Descargas\\POO\\NuevoPOO\\HospitalSanJose\\HospitalSanJose\\logo.png";
@@ -80,17 +79,16 @@ public class Hospital {
         this.localizacion = new Localizacion();
         this.gerente = new Gerente();
 
-      /**
-       *   archivador = new AdministradorArchivos();
-        archivador.crearArchivo("F:/Descargas/POO/NuevoPOO/HospitalSanJose/HospitalSanJose",
-                "datosHospital.txt");
-        archivador.escribirArchivoTexto(this.getNombre() + ","
-                + this.getDireccion() + "," + this.getTelefono() + "," + this.getLogo()
-                + "," + this.getPresupuesto() + "," + this.getMetaVentasAnual() + ","
-                + this.getFechaFundacion() + "," + localizacion.getLatitud() + ","
-                + localizacion.getLongitud());
-       */
-
+        /**
+         * archivador = new AdministradorArchivos();
+         * archivador.crearArchivo("F:/Descargas/POO/NuevoPOO/HospitalSanJose/HospitalSanJose",
+         * "datosHospital.txt");
+         * archivador.escribirArchivoTexto(this.getNombre() + "," +
+         * this.getDireccion() + "," + this.getTelefono() + "," + this.getLogo()
+         * + "," + this.getPresupuesto() + "," + this.getMetaVentasAnual() + ","
+         * + this.getFechaFundacion() + "," + localizacion.getLatitud() + "," +
+         * localizacion.getLongitud());
+         */
     }
 
     public Hospital(String nombre, String direccion, String telefono, String logo,
@@ -200,6 +198,7 @@ public class Hospital {
      */
     public void generarNomina() {
         Nomina nomina = new Nomina();
+
         if (nomina.presupuestoHospital() == false) {
             this.setEstado(false);
             System.out.println("Se cambio el estado a en quiebra: " + this.estado);

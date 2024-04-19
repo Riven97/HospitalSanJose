@@ -1,5 +1,6 @@
 package HospitalSanJose.model;
 
+import HospitalSanJose.exceptions.PresupuestoNegativoException;
 import HospitalSanJose.model.AdministradorGerente;
 import HospitalSanJose.model.AdministradorArchivos;
 import HospitalSanJose.model.Hospital;
@@ -10,41 +11,35 @@ import HospitalSanJose.model.Hospital;
  * @version 1.0.0
  * @since 2024/15/01
  */
-public class Usuario {
+public class UsuarioAdministrador {
 
     ///////////////////////////////////////////////////////////////////////////
     //Atrbibutos
-    Gerente gerente;
     AdministradorArchivos archivador;
     AdministradorGerente administradorGerente;
     Hospital hospital;
     AdministradorArchivos administradorArchivos;
+    Nomina nomina;
 
     /**
      * Metodo constructor
      */
-    public Usuario() {
-        this.gerente = new Gerente();
+    public UsuarioAdministrador() {
+        this.nomina = new Nomina();
         this.administradorGerente = new AdministradorGerente();
         this.hospital = new Hospital();
         this.administradorArchivos = new AdministradorArchivos();
         archivador = new AdministradorArchivos();
-        archivador.crearArchivo("F:/Descargas/POO/NuevoPOO/HospitalSanJose/HospitalSanJose", "DatosHospital.txt");
-        archivador.escribirArchivoTexto(this.hospital.getNombre() + ","
-                + this.hospital.getDireccion() + "," + this.hospital.getTelefono() + "," + this.hospital.getLogo()
-                + "," + this.hospital.getPresupuesto() + "," + this.hospital.getMetaVentasAnual() + ","
-                + this.hospital.getFechaFundacion() + "," + hospital.localizacion.getLatitud() + ","
-                + hospital.localizacion.getLongitud() + "," + this.gerente.getNombre()
-                + "," + this.gerente.getNumeroDocumento() + "," + this.gerente.getEdad() + "," + this.gerente.getCarrera());
+        this.actualizarDatos(administradorGerente, hospital);
+        archivador.leerArchivo(archivador.getArchivo());
 
     }
 
-    public Usuario(Gerente gerente, AdministradorArchivos archivador, AdministradorGerente administradorGerente, Hospital hospital, AdministradorArchivos administradorArchivos) {
-        this.gerente = gerente;
-        this.archivador = archivador;
+    public UsuarioAdministrador(AdministradorGerente administradorGerente, Hospital hospital, Nomina nomina) {
+        this.nomina = nomina;
         this.administradorGerente = administradorGerente;
         this.hospital = hospital;
-        this.administradorArchivos = administradorArchivos;
+
     }
 
     ///////////////////////////////////////////////////////////////////////////
@@ -73,4 +68,55 @@ public class Usuario {
         this.administradorArchivos = administradorArchivos;
     }
 
+    public Nomina getNomina() {
+        return nomina;
+    }
+
+    public void setNomina(Nomina nomina) {
+        this.nomina = nomina;
+    }
+
+    ///////////////////////////////////////////////////////////////////////////
+    //Metodos
+    /**
+     * Metodo para actualizar datos del gerente
+     *
+     * @param nombre
+     * @param numeroDocumento
+     * @param edad
+     * @param carrera
+     */
+    public void actualizarGerente(String nombre, String numeroDocumento, String edad, String carrera) {
+
+        this.administradorGerente.actualizarGerente(nombre, numeroDocumento, edad, carrera);
+        this.actualizarDatos(administradorGerente, hospital);
+    }
+
+    /**
+     * Metodo para actulizar los datos en el txt
+     *
+     * @param adminGerente
+     * @param adminHospital
+     */
+    private void actualizarDatos(AdministradorGerente adminGerente, Hospital adminHospital) {
+
+        archivador.crearArchivo("F:/Descargas/POO/NuevoPOO/HospitalSanJose/HospitalSanJose", "DatosHospital.txt");
+        archivador.escribirArchivoTexto(adminHospital.getNombre() + ","
+                + adminHospital.getDireccion() + "," + adminHospital.getTelefono() + "," + adminHospital.getLogo()
+                + "," + adminHospital.getPresupuesto() + "," + adminHospital.getMetaVentasAnual() + ","
+                + adminHospital.getFechaFundacion() + "," + adminHospital.getLocalizacion().getLatitud() + ","
+                + adminHospital.getLocalizacion().getLongitud() + "," + adminGerente.getGerente().getNombre()
+                + "," + adminGerente.getGerente().getNumeroDocumento() + "," + adminGerente.getGerente().getEdad() + "," + adminGerente.getGerente().getCarrera());
+    }
+
+    public String calcularPresupuesto() {
+        try {
+            this.nomina.calcularTotalSalarios();
+        } catch (PresupuestoNegativoException e) {
+            return e.getMessage();
+        }
+        return "El hospital está activo";
+    }
 }
+
+

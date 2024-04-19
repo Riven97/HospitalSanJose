@@ -27,7 +27,7 @@ public class AdministradorGerente {
     }
 
     public AdministradorGerente(AdministradorArchivos archivador, Gerente gerente) {
-        this.archivador = archivador;
+
         this.gerente = gerente;
     }
 
@@ -59,9 +59,6 @@ public class AdministradorGerente {
         gerente.setNumeroDocumento(numeroDocumento);
         gerente.setEdad(edad);
         gerente.setCarrera(carrera);
-        String infoGerente = gerente.getNombre() + "," + gerente.getNumeroDocumento()
-                + "," + gerente.getEdad() + "," + gerente.getCarrera();
-        archivador.escribirArchivoTexto(infoGerente);
 
         System.out.println("se actualizaron los datos");
 

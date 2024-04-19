@@ -54,7 +54,8 @@ public class EmpleadOperativo extends Empleado {
      */
     @Override
     public double calcularSalario() {
-        double totalSalarioOperario = salarioBase * 1.20;
+        double totalSalarioOperario = (salarioBase * 1.20);
+        System.out.println("calculo salario empleado salud: " + totalSalarioOperario);
         return totalSalarioOperario;
     }
 }

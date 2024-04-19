@@ -1,6 +1,8 @@
 package HospitalSanJose.model;
 
 import java.io.*;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author DOSSA0110
@@ -51,6 +53,35 @@ public class AdministradorArchivos {
         } catch (Exception e) {
             System.out.println("ERROR: " + e.getMessage());
         }
+    }
+
+    public ArrayList<String> leerArchivo(File archivo) {
+
+        List<String> lineasArchivo = new ArrayList<>();
+
+        try (BufferedReader lector = new BufferedReader(new FileReader(archivo))) {
+            String linea;
+            while ((linea = lector.readLine()) != null) {
+                lineasArchivo.add(linea); // Almacenar cada línea leída en la lista
+            }
+        } catch (IOException e) {
+            e.printStackTrace(); // Manejar errores de lectura del archivo
+        }
+
+        // Ahora puedes usar lineasArchivo fuera del bloque try-catch
+        // por ejemplo, imprimir todas las líneas almacenadas en la lista:
+        for (String linea : lineasArchivo) {
+            System.out.println(linea);
+        }
+        return (ArrayList<String>) lineasArchivo;
+    }
+
+    public File getArchivo() {
+        return archivo;
+    }
+
+    public void setArchivo(File archivo) {
+        this.archivo = archivo;
     }
 
 }

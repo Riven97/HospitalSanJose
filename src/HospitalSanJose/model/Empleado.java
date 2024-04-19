@@ -37,7 +37,7 @@ public abstract class Empleado {
         this.nombre = "";
         this.numeroDocumento = "";
         this.edad = 0;
-        this.salarioBase = 300000;
+        this.salarioBase = 500000;
     }
 
     public Empleado(String nombre, String numeroDocumento, int edad, double salarioBase) {

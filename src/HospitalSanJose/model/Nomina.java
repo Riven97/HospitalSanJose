@@ -1,5 +1,6 @@
 package HospitalSanJose.model;
 
+import HospitalSanJose.exceptions.PresupuestoNegativoException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -12,6 +13,8 @@ import java.util.List;
  */
 public class Nomina {
 
+    EmpleadoSalud empleadoSalud;
+    EmpleadOperativo empleadOperativo;
     ///////////////////////////////////////////////////////////////////////////
     //Atributos
     /**
@@ -42,6 +45,8 @@ public class Nomina {
         this.fecha = fecha;
         this.totalNomina = totalNomina;
         this.empleados = empleados;
+        this.empleadOperativo = new EmpleadOperativo();
+        this.empleadoSalud = new EmpleadoSalud();
     }
 
     public Nomina(double id, String fecha, double totalNomina, ArrayList<Empleado> empleados) {
@@ -49,6 +54,8 @@ public class Nomina {
         this.fecha = fecha;
         this.totalNomina = totalNomina;
         this.empleados = empleados;
+        this.empleadOperativo = new EmpleadOperativo();
+        this.empleadoSalud = new EmpleadoSalud();
     }
 
     ///////////////////////////////////////////////////////////////////////////
@@ -88,20 +95,24 @@ public class Nomina {
      *
      * @return
      */
-    public double calcularTotalSalarios(EmpleadoSalud salarioSalud, EmpleadOperativo salarioOperativo) {
-        double totalSalarios = salarioSalud.calcularSalario() + salarioOperativo.calcularSalario();
-
+    public double calcularTotalSalarios() throws PresupuestoNegativoException {
+        double totalSalarios = this.empleadoSalud.calcularSalario() + this.empleadOperativo.calcularSalario();
+        if (totalSalarios <= 0) {
+            throw new PresupuestoNegativoException();
+        }
+        System.out.println("calculo de los dos salarios de los empleados: " + totalSalarios);
         return totalSalarios;
     }
 
     public boolean presupuestoHospital() {
         Hospital hospital = new Hospital();
-        EmpleadoSalud empleadoSalud = new EmpleadoSalud();
-        EmpleadOperativo empleadoOperativo = new EmpleadOperativo();
-        double presupuesto = hospital.getPresupuesto() - this.calcularTotalSalarios(empleadoSalud, empleadoOperativo);
+        double presupuesto = hospital.getPresupuesto() - calcularTotalSalarios();
         if (presupuesto <= 0) {
+            System.out.println("estado del hospitlan es: false ");
             return false;
         } else {
+            System.out.println("estado del hospitlan es: true ");
+            
             return true;
         }
     }
