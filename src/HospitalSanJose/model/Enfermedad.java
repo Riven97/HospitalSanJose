@@ -28,22 +28,20 @@ public class Enfermedad {
     /**
      * Metodos constructorres
      */
-        public Enfermedad() {
+    public Enfermedad() {
         this.nombre = "";
         this.descripcion = "";
         this.receta = "";
     }
-    
-    
+
     public Enfermedad(String nombre, String descripcion, String receta) {
         this.nombre = nombre;
         this.descripcion = descripcion;
         this.receta = receta;
     }
-    
+
     ///////////////////////////////////////////////////////////////////////////
     //Metodos de acceso
-
     public String getNombre() {
         return nombre;
     }
@@ -67,6 +65,9 @@ public class Enfermedad {
     public void setReceta(String receta) {
         this.receta = receta;
     }
-    
-    
+
+    ///////////////////////////////////////////////////////////////////////////
+    //Metodos
+ 
+
 }

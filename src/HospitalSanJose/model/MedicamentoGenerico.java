@@ -10,11 +10,12 @@ public class MedicamentoGenerico extends Medicamento {
 
     /**
      * Metodo constructor heredado
+     *
      * @param id
      * @param nombre
      * @param descripcion
      * @param costo
-     * @param precioVenta 
+     * @param precioVenta
      */
     public MedicamentoGenerico(int id, String nombre, String descripcion,
             double costo, double precioVenta) {

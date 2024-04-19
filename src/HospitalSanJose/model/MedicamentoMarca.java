@@ -43,4 +43,6 @@ public class MedicamentoMarca extends Medicamento {
         this.fabricante = fabricante;
     }
 
+    ///////////////////////////////////////////////////////////////////////////
+    //Meotods
 }

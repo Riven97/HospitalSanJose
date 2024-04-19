@@ -16,7 +16,7 @@ public abstract class Medicamento {
     /**
      * Nomrbe del medicamento
      */
-    private String nombre;
+    protected String nombre;
 
     /**
      * descripcion del medicamento
@@ -93,4 +93,6 @@ public abstract class Medicamento {
         this.precioVenta = precioVenta;
     }
 
+    /////////////////////////////////////////////////////////////////////////////
+    //Metodos
 }
