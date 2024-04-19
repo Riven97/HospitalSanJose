@@ -12,6 +12,9 @@ public class Paciente {
 
     ///////////////////////////////////////////////////////////////////////////
     //Atributos
+    MedicamentoGenerico medicamentoGenerico;
+    MedicamentoMarca medicamentoMarca;
+
     private ArrayList<Enfermedad> enfermedades;
 
     /**
@@ -49,6 +52,8 @@ public class Paciente {
      *
      */
     public Paciente() {
+        this.medicamentoMarca = new MedicamentoMarca();
+        this.medicamentoGenerico = new MedicamentoGenerico();
         this.enfermedades = new ArrayList<>();
         this.nombre = "";
         this.numeroDocumento = "";
@@ -69,7 +74,8 @@ public class Paciente {
      * @param telefono
      * @param estadoPaciente
      */
-    public Paciente(ArrayList<Enfermedad> enfermedades, String nombre, String numeroDocumento, String edad, String correoElectronico, String telefono, String estadoPaciente) {
+    public Paciente(ArrayList<Enfermedad> enfermedades, String nombre, String numeroDocumento,
+            String edad, String correoElectronico, String telefono, String estadoPaciente) {
         this.enfermedades = enfermedades;
         this.nombre = nombre;
         this.numeroDocumento = numeroDocumento;
@@ -135,23 +141,83 @@ public class Paciente {
 
     ///////////////////////////////////////////////////////////////////////////
     //Metodos
-    /**
-     * Metodos para administrar medicamento
-     */
-    public void administrarMedicamento() {
+    public void agregarMedicamento(Medicamento medicamento) {
 
+        for (Enfermedad e : enfermedades) {
+            if (e.equals(medicamento.getEnfermedadAlivia())) {
+                System.out.println("El paciente ya está siendo tratado con el medicamento " + medicamento.getNombre() + ".");
+                return;
+            }
+        }
+
+        enfermedades.add(medicamento.getEnfermedadAlivia());
+        System.out.println("Se ha agregado el medicamento " + medicamento.getNombre() + " a la lista de tratamientos del paciente.");
+    }
+
+    /**
+     * Metodo para confirmar padece alguna enfermedad
+     *
+     * @param enfermedad
+     * @return
+     */
+    public boolean tieneEnfermedad(Enfermedad enfermedad) {
+
+        for (Enfermedad e : enfermedades) {
+
+            if (e.equals(enfermedad)) {
+
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    /**
+     * Metodo para eliminar enfermedad
+     *
+     * @param enfermedad
+     */
+    public void eliminarEnfermedad(Enfermedad enfermedad) {
+
+        enfermedades.remove(enfermedad);
+    }
+
+    /**
+     * Metodos para saber el medicamento que se tomara el paciente
+     */
+    public void administrarMedicamento(Enfermedad enfermedad) {
+        if ("SALUDABLE".equals(this.getEstadoPaciente())) {
+            System.out.println("El paciente " + this.getNombre() + " está saludable. No se administra el medicamento.");
+            return;
+        }
+
+        if (!this.tieneEnfermedad(enfermedad)) {
+            System.out.println("El paciente " + this.getNombre() + " no tiene la enfermedad " + enfermedad.getNombre() + ". No se administra el medicamento.");
+            return;
+        }
+
+        System.out.println("Se está administrando el medicamento " + nombre + " al paciente " + this.getNombre()
+                + " para tratar la enfermedad: " + enfermedad.getNombre());
+
+        this.eliminarEnfermedad(enfermedad);
+        System.out.println("El paciente " + this.getNombre() + " ha sido tratado con éxito y la enfermedad " + enfermedad.getNombre() + " ha sido eliminada.");
+
+        if (this.getEnfermedades().isEmpty()) {
+            this.getEstadoPaciente();
+            System.out.println("El paciente " + this.getNombre() + " está completamente curado y ahora está saludable.");
+        }
     }
 
     /**
      *
-     * @param medicamento
      * @param enfermedadACurar
      */
-    public void curarEnfermedad(Medicamento medicamento, Enfermedad enfermedadACurar) {
+    public void curarEnfermedad(Enfermedad enfermedadACurar) {
 
         if (enfermedades.contains(enfermedadACurar)) {
 
-            this.administrarMedicamento(this, enfermedadACurar);
+            this.administrarMedicamento(enfermedadACurar);
 
             enfermedades.remove(enfermedadACurar);
             System.out.println("El paciente " + nombre + " ha sido curado de la enfermedad: " + enfermedadACurar.getNombre());

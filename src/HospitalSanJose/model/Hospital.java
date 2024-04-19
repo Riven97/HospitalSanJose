@@ -2,6 +2,7 @@ package HospitalSanJose.model;
 
 import HospitalSanJose.exceptions.DenegarProcesoNominaException;
 import HospitalSanJose.exceptions.PresupuestoNegativoException;
+import java.util.ArrayList;
 import java.util.Date;
 
 /**
@@ -14,6 +15,8 @@ public class Hospital {
 
     ///////////////////////////////////////////////////////////////////////////
     //Atributos
+    private ArrayList<Medicamento> listaMedicamentos;
+
     Nomina nomina;
 
     /**
@@ -69,7 +72,7 @@ public class Hospital {
      * Localizacion del hospital (longitud - latitud)
      */
     private Localizacion localizacion;
-    
+
     private double nominaCalculada;
 
     /**
@@ -125,8 +128,16 @@ public class Hospital {
         this.nomina = nomina;
 
     }
+
     //////////////////////////////////////////////////////////////////////////
     //Metodos de acceso
+    public ArrayList<Medicamento> getListaMedicamentos() {
+        return listaMedicamentos;
+    }
+
+    public void setListaMedicamentos(ArrayList<Medicamento> listaMedicamentos) {
+        this.listaMedicamentos = listaMedicamentos;
+    }
 
     public double getDeuda() {
         return deuda;
@@ -235,11 +246,9 @@ public class Hospital {
     public double getNominaCalculada() {
         return nominaCalculada;
     }
-    
-    
 
     ///////////////////////////////////////////////////////////////////////////
-    //Metodos    
+    //Metodos   
     /**
      * Metodo para controlar la exception de presupuesto negativo
      *
@@ -254,26 +263,24 @@ public class Hospital {
         return "El hospital está activo";
     }
 
-
-
     /**
-     * Metodo para cambiar el estadoFinanciero del hospital de ser necesario 
+     * Metodo para cambiar el estadoFinanciero del hospital de ser necesario
      */
     public void generarNomina() throws DenegarProcesoNominaException, PresupuestoNegativoException {
-       
-        this.nominaCalculada= 0;
+
+        this.nominaCalculada = 0;
         if ("EN_QUIEBRA".equals(this.estadoFinanciero)) {
             throw new DenegarProcesoNominaException();
         } else {
             nominaCalculada = this.nomina.calcularTotalSalarios();
-             this.presupuesto = this.presupuesto - nominaCalculada;
-       
+            this.presupuesto = this.presupuesto - nominaCalculada;
+
             if (presupuesto <= 0) {
                 this.setDeuda(presupuesto);
                 this.setEstadoFinanciero("EN_QUIEBRA");
                 throw new PresupuestoNegativoException(this.getDeuda());
-                     
-            } 
+
+            }
         }
     }
 

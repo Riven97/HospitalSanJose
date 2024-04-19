@@ -8,6 +8,10 @@ package HospitalSanJose.model;
  */
 public class MedicamentoGenerico extends Medicamento {
 
+    public MedicamentoGenerico() {
+        super(null, 0, "", "", 0, 0);
+    }
+
     /**
      * Metodo constructor heredado
      *
@@ -17,9 +21,9 @@ public class MedicamentoGenerico extends Medicamento {
      * @param costo
      * @param precioVenta
      */
-    public MedicamentoGenerico(int id, String nombre, String descripcion,
+    public MedicamentoGenerico(Enfermedad enfermedadAlivia, int id, String nombre, String descripcion,
             double costo, double precioVenta) {
-        super(id, nombre, descripcion, costo, precioVenta);
+        super(enfermedadAlivia, id, nombre, descripcion, costo, precioVenta);
     }
 
     /////////////////////////////////////////////////////////////////////////

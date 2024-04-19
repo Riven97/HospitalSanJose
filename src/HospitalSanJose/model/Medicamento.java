@@ -8,6 +8,7 @@ package HospitalSanJose.model;
  */
 public abstract class Medicamento {
 
+    protected Enfermedad enfermedadAlivia;
     /**
      * Id del medicamento
      */
@@ -37,6 +38,7 @@ public abstract class Medicamento {
      * Metodo constructor para inicializar atributos
      */
     public Medicamento() {
+        this.enfermedadAlivia = new Enfermedad();
         this.id = 0;
         this.nombre = "";
         this.descripcion = "";
@@ -44,15 +46,25 @@ public abstract class Medicamento {
         this.precioVenta = 0;
     }
 
-    public Medicamento(int id, String nombre, String descripcion, double costo, double precioVenta) {
+    public Medicamento(Enfermedad enfermedadAlivia, int id, String nombre, String descripcion, double costo, double precioVenta) {
+        this.enfermedadAlivia = enfermedadAlivia;
+        this.id = id;
         this.nombre = nombre;
         this.descripcion = descripcion;
         this.costo = costo;
         this.precioVenta = precioVenta;
     }
-
     ///////////////////////////////////////////////////////////////////////////
     //Metodos de acceso
+
+    public Enfermedad getEnfermedadAlivia() {
+        return enfermedadAlivia;
+    }
+
+    public void setEnfermedadAlivia(Enfermedad enfermedadAlivia) {
+        this.enfermedadAlivia = enfermedadAlivia;
+    }
+
     public int getId() {
         return id;
     }

@@ -16,22 +16,17 @@ public class MedicamentoMarca extends Medicamento {
      * Metodo constrcutor del atributo propio
      */
     public MedicamentoMarca() {
+        super(null, 0, "", "", 0, 0);
         this.fabricante = "";
     }
 
-    /**
-     * Metodo constrcutor heredado
-     *
-     * @param id
-     * @param nombre
-     * @param descripcion
-     * @param costo
-     * @param precioVenta
-     * @param fabricante
-     */
-    public MedicamentoMarca(int id, String nombre, String descripcion,
-            double costo, double precioVenta, String fabricante) {
-        super(id, nombre, descripcion, costo, precioVenta);
+    public MedicamentoMarca(String fabricante) {
+        this.fabricante = fabricante;
+    }
+
+    public MedicamentoMarca(String fabricante, Enfermedad enfermedadAlivia,
+            int id, String nombre, String descripcion, double costo, double precioVenta) {
+        super(enfermedadAlivia, id, nombre, descripcion, costo, precioVenta);
         this.fabricante = fabricante;
     }
 
