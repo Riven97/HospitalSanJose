@@ -121,10 +121,10 @@ public class Nomina {
     public boolean presupuestoHospital() throws PresupuestoNegativoException {
         Hospital hospital = new Hospital();
         double presupuesto = hospital.getPresupuesto() - calcularTotalSalarios();
-
+        hospital.setDeuda(presupuesto);
         if (presupuesto <= 0) {
 
-            throw new PresupuestoNegativoException();
+            throw new PresupuestoNegativoException(hospital.getDeuda());
 
         } else {
             System.out.println("estado del hospitlan es: true ");
