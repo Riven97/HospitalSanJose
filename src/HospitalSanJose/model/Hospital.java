@@ -10,7 +10,8 @@ import java.util.Date;
  */
 public class Hospital {
 
-   
+    AdministradorArchivos archivador;
+
     /**
      * Nombre del hospital
      */
@@ -54,7 +55,7 @@ public class Hospital {
     /**
      * Localizacion del hospital (longitud - latitud)
      */
-    Localizacion localizacion;
+    private Localizacion localizacion;
 
     /**
      * Gerente del hospital
@@ -76,9 +77,18 @@ public class Hospital {
         this.metaVentasAnual = 0;
         this.fechaFundacion = "1965";
         this.estado = true;
-        this.localizacion = localizacion;
-        this.gerente = gerente;
-     
+        this.localizacion = new Localizacion();
+        this.gerente = new Gerente();
+
+        archivador = new AdministradorArchivos();
+        archivador.crearArchivo("F:/Descargas/POO/NuevoPOO/HospitalSanJose/HospitalSanJose",
+                "datosHospital.txt");
+        archivador.escribirArchivoTexto(this.getNombre() + ","
+                + this.getDireccion() + "," + this.getTelefono() + "," + this.getLogo()
+                + "," + this.getPresupuesto() + "," + this.getMetaVentasAnual() + ","
+                + this.getFechaFundacion() + "," + localizacion.getLatitud() + ","
+                + localizacion.getLongitud());
+
     }
 
     public Hospital(String nombre, String direccion, String telefono, String logo,
@@ -94,7 +104,7 @@ public class Hospital {
         this.estado = estado;
         this.localizacion = localizacion;
         this.gerente = gerente;
- 
+
     }
 
     public String getNombre() {
@@ -156,7 +166,8 @@ public class Hospital {
     public boolean isEstado() {
         return estado;
     }
-    public boolean getEstado(){
+
+    public boolean getEstado() {
         return estado;
     }
 
@@ -181,16 +192,19 @@ public class Hospital {
     }
 
     ///////////////////////////////////////////////////////////////////////////
-
     //Metodos    
-    
-    public void generarNomina (){
+    /**
+     * Metodo para cambiar el estado del hospital de ser necesario
+     */
+    public void generarNomina() {
         Nomina nomina = new Nomina();
-        if (nomina.presupuestoHospital() == false){
+        if (nomina.presupuestoHospital() == false) {
             this.setEstado(false);
-        }else{
+            System.out.println("Se cambio el estado a en quiebra: " + this.estado);
+        } else {
             this.setEstado(true);
-        } 
+            System.out.println("El estado sigue siendo activo: " + this.estado);
+        }
     }
-    
+
 }
