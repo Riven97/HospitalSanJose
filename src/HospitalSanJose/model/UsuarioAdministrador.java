@@ -1,9 +1,11 @@
 package HospitalSanJose.model;
 
+import HospitalSanJose.exceptions.DenegarProcesoNominaException;
 import HospitalSanJose.exceptions.PresupuestoNegativoException;
 import HospitalSanJose.model.AdministradorGerente;
 import HospitalSanJose.model.AdministradorArchivos;
 import HospitalSanJose.model.Hospital;
+import HospitalSanJose.respuesta.ResultadoOperacion;
 
 /**
  * @author DOSSA0110
@@ -19,13 +21,12 @@ public class UsuarioAdministrador {
     AdministradorGerente administradorGerente;
     Hospital hospital;
     AdministradorArchivos administradorArchivos;
-    Nomina nomina;
-
+ 
     /**
      * Metodo constructor
      */
     public UsuarioAdministrador() {
-        this.nomina = new Nomina();
+      
         this.administradorGerente = new AdministradorGerente();
         this.hospital = new Hospital();
         this.administradorArchivos = new AdministradorArchivos();
@@ -35,8 +36,8 @@ public class UsuarioAdministrador {
 
     }
 
-    public UsuarioAdministrador(AdministradorGerente administradorGerente, Hospital hospital, Nomina nomina) {
-        this.nomina = nomina;
+    public UsuarioAdministrador(AdministradorGerente administradorGerente, Hospital hospital) {
+       
         this.administradorGerente = administradorGerente;
         this.hospital = hospital;
 
@@ -68,13 +69,7 @@ public class UsuarioAdministrador {
         this.administradorArchivos = administradorArchivos;
     }
 
-    public Nomina getNomina() {
-        return nomina;
-    }
 
-    public void setNomina(Nomina nomina) {
-        this.nomina = nomina;
-    }
 
     ///////////////////////////////////////////////////////////////////////////
     //Metodos
@@ -108,15 +103,20 @@ public class UsuarioAdministrador {
                 + adminHospital.getLocalizacion().getLongitud() + "," + adminGerente.getGerente().getNombre()
                 + "," + adminGerente.getGerente().getNumeroDocumento() + "," + adminGerente.getGerente().getEdad() + "," + adminGerente.getGerente().getCarrera());
     }
+    
+    public ResultadoOperacion generarNominaHospital(){
 
-    public String calcularPresupuesto() {
-        try {
-            this.nomina.presupuestoHospital();
-        } catch (PresupuestoNegativoException e) {
-            return e.getMessage();
+        try{
+         this.hospital.generarNomina();
+        }catch(DenegarProcesoNominaException |PresupuestoNegativoException e)  {
+             return new ResultadoOperacion(false,this.hospital.getNominaCalculada()+"" ,e.getMessage());
         }
-        return "El hospital está activo";
+        return new ResultadoOperacion(true, this.hospital.getNominaCalculada()+"","");
+    } 
+    
+    
+   public void registrarPatrocinio(double valorPatrocinio) {
+       this.hospital.registrarPatrocinio(valorPatrocinio);
     }
+
 }
-
-

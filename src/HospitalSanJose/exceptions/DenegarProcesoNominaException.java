@@ -8,7 +8,7 @@ package HospitalSanJose.exceptions;
  */
 public class DenegarProcesoNominaException extends RuntimeException {
 
-    private static String mensaje = " Proceso de nomina denegado ya que el presupeusto fue excedido ";
+    private static String mensaje = " Proceso de nomina denegado ya que el presupeusto fue excedido y el hospital esta en quiebra ";
 
     public DenegarProcesoNominaException() {
         super(DenegarProcesoNominaException.mensaje);

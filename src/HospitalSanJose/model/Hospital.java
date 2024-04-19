@@ -1,5 +1,7 @@
 package HospitalSanJose.model;
 
+import HospitalSanJose.exceptions.DenegarProcesoNominaException;
+import HospitalSanJose.exceptions.PresupuestoNegativoException;
 import java.util.Date;
 
 /**
@@ -12,6 +14,8 @@ public class Hospital {
 
     ///////////////////////////////////////////////////////////////////////////
     //Atributos
+    Nomina nomina;
+
     /**
      * deuda generada por que la nomina rebaso el presupuesto
      */
@@ -59,12 +63,14 @@ public class Hospital {
     /**
      * Estado del hospital (True =activo o False = en quiebra)
      */
-    private boolean estado;
+    private String estadoFinanciero;
 
     /**
      * Localizacion del hospital (longitud - latitud)
      */
     private Localizacion localizacion;
+    
+    private double nominaCalculada;
 
     /**
      * Gerente del hospital
@@ -76,6 +82,7 @@ public class Hospital {
      * Inicializo cada uno de los atributos anteriores
      */
     public Hospital() {
+        this.nomina = new Nomina();
         this.deuda = 0;
         this.nombre = "Hospital San Jose St. Bonaventure";
         this.direccion = "2425 Samaritan Dr, San Jose, CA 95124,\n"
@@ -85,7 +92,7 @@ public class Hospital {
         this.presupuesto = 1000000;
         this.metaVentasAnual = 0;
         this.fechaFundacion = "1965";
-        this.estado = true;
+        this.estadoFinanciero = "ACTIVO";
         this.localizacion = new Localizacion();
         this.gerente = new Gerente();
 
@@ -101,9 +108,9 @@ public class Hospital {
          */
     }
 
-    public Hospital(double deuda, String nombre, String direccion, String telefono, String logo,
+    public void actualizaDatosHospital(double deuda, String nombre, String direccion, String telefono, String logo,
             double presupuesto, double metaVentasAnual, String fechaFundacion,
-            boolean estado, Localizacion localizacion, Gerente gerente) {
+            String estado, Localizacion localizacion, Gerente gerente, Nomina nomina) {
         this.deuda = deuda;
         this.nombre = nombre;
         this.direccion = direccion;
@@ -112,9 +119,10 @@ public class Hospital {
         this.presupuesto = presupuesto;
         this.metaVentasAnual = metaVentasAnual;
         this.fechaFundacion = fechaFundacion;
-        this.estado = estado;
+        this.estadoFinanciero = estado;
         this.localizacion = localizacion;
         this.gerente = gerente;
+        this.nomina = nomina;
 
     }
     //////////////////////////////////////////////////////////////////////////
@@ -192,16 +200,12 @@ public class Hospital {
         this.fechaFundacion = fechaFundacion;
     }
 
-    public boolean isEstado() {
-        return estado;
+    public String getEstado() {
+        return estadoFinanciero;
     }
 
-    public boolean getEstado() {
-        return estado;
-    }
-
-    public void setEstado(boolean estado) {
-        this.estado = estado;
+    public void setEstadoFinanciero(String estadoFinanciero) {
+        this.estadoFinanciero = estadoFinanciero;
     }
 
     public Localizacion getLocalizacion() {
@@ -220,20 +224,56 @@ public class Hospital {
         this.gerente = gerente;
     }
 
+    public Nomina getNomina() {
+        return nomina;
+    }
+
+    public void setNomina(Nomina nomina) {
+        this.nomina = nomina;
+    }
+
+    public double getNominaCalculada() {
+        return nominaCalculada;
+    }
+    
+    
+
     ///////////////////////////////////////////////////////////////////////////
     //Metodos    
     /**
-     * Metodo para cambiar el estado del hospital de ser necesario
+     * Metodo para controlar la exception de presupuesto negativo
+     *
+     * @return
      */
-    public void generarNomina() {
-        Nomina nomina = new Nomina();
+    public String calcularPresupuesto() {
+        try {
 
-        if (nomina.presupuestoHospital() == false) {
-            this.setEstado(false);
-            System.out.println("Se cambio el estado a en quiebra: " + this.estado);
+        } catch (PresupuestoNegativoException e) {
+            return e.getMessage();
+        }
+        return "El hospital está activo";
+    }
+
+
+
+    /**
+     * Metodo para cambiar el estadoFinanciero del hospital de ser necesario 
+     */
+    public void generarNomina() throws DenegarProcesoNominaException, PresupuestoNegativoException {
+       
+        this.nominaCalculada= 0;
+        if ("EN_QUIEBRA".equals(this.estadoFinanciero)) {
+            throw new DenegarProcesoNominaException();
         } else {
-            this.setEstado(true);
-            System.out.println("El estado sigue siendo activo: " + this.estado);
+            nominaCalculada = this.nomina.calcularTotalSalarios();
+             this.presupuesto = this.presupuesto - nominaCalculada;
+       
+            if (presupuesto <= 0) {
+                this.setDeuda(presupuesto);
+                this.setEstadoFinanciero("EN_QUIEBRA");
+                throw new PresupuestoNegativoException(this.getDeuda());
+                     
+            } 
         }
     }
 
@@ -244,8 +284,8 @@ public class Hospital {
      */
     public void registrarPatrocinio(double valorPatrocinio) {
 
-        if (valorPatrocinio < this.deuda) {
-            this.estado = true;
+        if (valorPatrocinio > this.deuda) {
+            this.estadoFinanciero = "ACTIVO";
             this.deuda = 0;
             System.out.println("el valor del patrocinio que es: " + valorPatrocinio
                     + "por lo tanto saldo la deuda de: " + this.deuda + " y el hospital vuelve a"

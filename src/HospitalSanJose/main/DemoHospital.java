@@ -21,7 +21,7 @@ public class DemoHospital {
     public static void main(String[] args) {
         // UsuarioAdministrador u1 = new UsuarioAdministrador();
 
-       // Nomina n1 = new Nomina();
+       Nomina n1 = new Nomina();
         Hospital h1 = new Hospital();
        // AdministradorGerente ag = new AdministradorGerente();
 
