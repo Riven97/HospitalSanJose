@@ -6,7 +6,7 @@ package HospitalSanJose.model;
  * @version 1.0.0
  * @since 2024/15/01
  */
-public class EmpleadoOperativo extends Empleado {
+public class EmpleadOperativo extends Empleado {
 
     ///////////////////////////////////////////////////////////////////////////
     //Atributo
@@ -18,7 +18,7 @@ public class EmpleadoOperativo extends Empleado {
     /**
      * Metodo constructor del atributo
      */
-    public EmpleadoOperativo() {
+    public EmpleadOperativo() {
         this.areaTrabajo = "";
     }
 
@@ -31,7 +31,7 @@ public class EmpleadoOperativo extends Empleado {
      * @param salarioBase
      * @param areaTrabajo
      */
-    public EmpleadoOperativo(String nombre, String numeroDocumento,
+    public EmpleadOperativo(String nombre, String numeroDocumento,
             int edad, double salarioBase, String areaTrabajo) {
         super(nombre, numeroDocumento, edad, salarioBase);
         this.areaTrabajo = areaTrabajo;

@@ -88,7 +88,7 @@ public class Nomina {
      *
      * @return
      */
-    public double calcularTotalSalarios(EmpleadoSalud salarioSalud, EmpleadoOperativo salarioOperativo) {
+    public double calcularTotalSalarios(EmpleadoSalud salarioSalud, EmpleadOperativo salarioOperativo) {
         double totalSalarios = salarioSalud.calcularSalario() + salarioOperativo.calcularSalario();
 
         return totalSalarios;
@@ -97,7 +97,7 @@ public class Nomina {
     public boolean presupuestoHospital() {
         Hospital hospital = new Hospital();
         EmpleadoSalud empleadoSalud = new EmpleadoSalud();
-        EmpleadoOperativo empleadoOperativo = new EmpleadoOperativo();
+        EmpleadOperativo empleadoOperativo = new EmpleadOperativo();
         double presupuesto = hospital.getPresupuesto() - this.calcularTotalSalarios(empleadoSalud, empleadoOperativo);
         if (presupuesto <= 0) {
             return false;

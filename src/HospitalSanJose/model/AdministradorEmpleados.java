@@ -13,16 +13,17 @@ public class AdministradorEmpleados {
     ///////////////////////////////////////////////////////////////////////////
     //Atributo
     EmpleadoSalud empleadoSalud1 = new EmpleadoSalud();
-    EmpleadoOperativo empleadoOperativo1 = new EmpleadoOperativo();
+    EmpleadOperativo empleadoOperativo1 = new EmpleadOperativo();
     private ArrayList<Empleado> empleados;
 
     /**
      * constructor
      */
     public AdministradorEmpleados() {
-
         this.empleados = new ArrayList<>();
-      
+
+        empleados.add(empleadoOperativo1);
+        empleados.add(empleadoSalud1);
 
     }
 
@@ -39,11 +40,11 @@ public class AdministradorEmpleados {
         this.empleadoSalud1 = empleadoSalud1;
     }
 
-    public EmpleadoOperativo getEmpleadoOperativo1() {
+    public EmpleadOperativo getEmpleadoOperativo1() {
         return empleadoOperativo1;
     }
 
-    public void setEmpleadoOperativo1(EmpleadoOperativo empleadoOperativo1) {
+    public void setEmpleadoOperativo1(EmpleadOperativo empleadoOperativo1) {
         this.empleadoOperativo1 = empleadoOperativo1;
     }
 
