@@ -13,10 +13,19 @@ import java.util.List;
  */
 public class Nomina {
 
-    EmpleadoSalud empleadoSalud;
-    EmpleadOperativo empleadOperativo;
     ///////////////////////////////////////////////////////////////////////////
     //Atributos
+    /**
+     * Añadimos los tipos de empleados
+     */
+    EmpleadoSalud empleadoSalud;
+    EmpleadOperativo empleadOperativo;
+
+    /**
+     * contador unico de nominas
+     */
+    private static int contadorNomina = 1;
+
     /**
      * Identificador de la nomina
      */
@@ -95,24 +104,31 @@ public class Nomina {
      *
      * @return
      */
-    public double calcularTotalSalarios() throws PresupuestoNegativoException {
+    public double calcularTotalSalarios() {
         double totalSalarios = this.empleadoSalud.calcularSalario() + this.empleadOperativo.calcularSalario();
         if (totalSalarios <= 0) {
-            throw new PresupuestoNegativoException();
+
         }
         System.out.println("calculo de los dos salarios de los empleados: " + totalSalarios);
         return totalSalarios;
     }
 
-    public boolean presupuestoHospital() {
+    /**
+     * Metodos para restar la nomina al presupuesto
+     *
+     * @return
+     */
+    public boolean presupuestoHospital() throws PresupuestoNegativoException {
         Hospital hospital = new Hospital();
         double presupuesto = hospital.getPresupuesto() - calcularTotalSalarios();
+
         if (presupuesto <= 0) {
-            System.out.println("estado del hospitlan es: false ");
-            return false;
+
+            throw new PresupuestoNegativoException();
+
         } else {
             System.out.println("estado del hospitlan es: true ");
-            
+
             return true;
         }
     }

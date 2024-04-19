@@ -10,6 +10,15 @@ import java.util.Date;
  */
 public class Hospital {
 
+    ///////////////////////////////////////////////////////////////////////////
+    //Atributos
+    /**
+     * deuda generada por que la nomina rebaso el presupuesto
+     */
+    private double deuda;
+    /**
+     * para escribir el archivo
+     */
     AdministradorArchivos archivador;
 
     /**
@@ -67,6 +76,7 @@ public class Hospital {
      * Inicializo cada uno de los atributos anteriores
      */
     public Hospital() {
+        this.deuda = 0;
         this.nombre = "Hospital San Jose St. Bonaventure";
         this.direccion = "2425 Samaritan Dr, San Jose, CA 95124,\n"
                 + "Estados Unidos";
@@ -91,9 +101,10 @@ public class Hospital {
          */
     }
 
-    public Hospital(String nombre, String direccion, String telefono, String logo,
+    public Hospital(double deuda, String nombre, String direccion, String telefono, String logo,
             double presupuesto, double metaVentasAnual, String fechaFundacion,
             boolean estado, Localizacion localizacion, Gerente gerente) {
+        this.deuda = deuda;
         this.nombre = nombre;
         this.direccion = direccion;
         this.telefono = telefono;
@@ -105,6 +116,24 @@ public class Hospital {
         this.localizacion = localizacion;
         this.gerente = gerente;
 
+    }
+    //////////////////////////////////////////////////////////////////////////
+    //Metodos de acceso
+
+    public double getDeuda() {
+        return deuda;
+    }
+
+    public void setDeuda(double deuda) {
+        this.deuda = deuda;
+    }
+
+    public AdministradorArchivos getArchivador() {
+        return archivador;
+    }
+
+    public void setArchivador(AdministradorArchivos archivador) {
+        this.archivador = archivador;
     }
 
     public String getNombre() {

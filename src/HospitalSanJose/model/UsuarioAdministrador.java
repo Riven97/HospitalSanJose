@@ -111,7 +111,7 @@ public class UsuarioAdministrador {
 
     public String calcularPresupuesto() {
         try {
-            this.nomina.calcularTotalSalarios();
+            this.nomina.presupuestoHospital();
         } catch (PresupuestoNegativoException e) {
             return e.getMessage();
         }
