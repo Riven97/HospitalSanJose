@@ -141,18 +141,8 @@ public class Paciente {
 
     ///////////////////////////////////////////////////////////////////////////
     //Metodos
-    public void agregarMedicamento(Medicamento medicamento) {
+    
 
-        for (Enfermedad e : enfermedades) {
-            if (e.equals(medicamento.getEnfermedadAlivia())) {
-                System.out.println("El paciente ya está siendo tratado con el medicamento " + medicamento.getNombre() + ".");
-                return;
-            }
-        }
-
-        enfermedades.add(medicamento.getEnfermedadAlivia());
-        System.out.println("Se ha agregado el medicamento " + medicamento.getNombre() + " a la lista de tratamientos del paciente.");
-    }
 
     /**
      * Metodo para confirmar padece alguna enfermedad

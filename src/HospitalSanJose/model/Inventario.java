@@ -71,7 +71,7 @@ public class Inventario {
      * Con el id encontrado se accede a el medicamento y se actualizan algunos
      * datos
      */
-    public Medicamento actualizarProducto(long id, Medicamento medicamentos) {
+    public Medicamento actualizarMedicamento(long id, Medicamento medicamentos) {
         int index = this.buscarIndiceMedicamento(id);
         if (index >= 0) {
             return this.medicamentos.set(index, medicamentos);
