@@ -23,10 +23,12 @@ public class AdministradorGerente {
      */
     public AdministradorGerente() {
         this.gerente = new Gerente();
-        archivador = new AdministradorArchivos();
-        archivador.crearArchivo("F:/Descargas/POO/NuevoPOO/HospitalSanJose/HospitalSanJose", "datosGerente.txt");
-        archivador.escribirArchivoTexto(this.gerente.getNombre()
-                + "," + this.gerente.getNumeroDocumento() + "," + this.gerente.getEdad() + "," + this.gerente.getCarrera());
+
+    }
+
+    public AdministradorGerente(AdministradorArchivos archivador, Gerente gerente) {
+        this.archivador = archivador;
+        this.gerente = gerente;
     }
 
     ///////////////////////////////////////////////////////////////////////////

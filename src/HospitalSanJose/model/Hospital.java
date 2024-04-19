@@ -55,7 +55,7 @@ public class Hospital {
     /**
      * Localizacion del hospital (longitud - latitud)
      */
-    private Localizacion localizacion;
+    protected Localizacion localizacion;
 
     /**
      * Gerente del hospital
@@ -80,7 +80,8 @@ public class Hospital {
         this.localizacion = new Localizacion();
         this.gerente = new Gerente();
 
-        archivador = new AdministradorArchivos();
+      /**
+       *   archivador = new AdministradorArchivos();
         archivador.crearArchivo("F:/Descargas/POO/NuevoPOO/HospitalSanJose/HospitalSanJose",
                 "datosHospital.txt");
         archivador.escribirArchivoTexto(this.getNombre() + ","
@@ -88,6 +89,7 @@ public class Hospital {
                 + "," + this.getPresupuesto() + "," + this.getMetaVentasAnual() + ","
                 + this.getFechaFundacion() + "," + localizacion.getLatitud() + ","
                 + localizacion.getLongitud());
+       */
 
     }
 

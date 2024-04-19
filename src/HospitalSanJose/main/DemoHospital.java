@@ -7,6 +7,7 @@ import HospitalSanJose.model.EmpleadoOperativo;
 import HospitalSanJose.model.EmpleadoSalud;
 import HospitalSanJose.model.Hospital;
 import HospitalSanJose.model.Nomina;
+import HospitalSanJose.model.Usuario;
 import java.util.ArrayList;
 
 /**
@@ -18,7 +19,7 @@ import java.util.ArrayList;
 public class DemoHospital {
 
     public static void main(String[] args) {
-        
+        Usuario u1= new Usuario();
         EmpleadoSalud salario = new EmpleadoSalud();
         EmpleadoOperativo salario2 = new EmpleadoOperativo();
         Nomina n1 = new Nomina();
