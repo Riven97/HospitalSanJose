@@ -22,10 +22,13 @@ public class DemoHospital {
         EmpleadoSalud salario = new EmpleadoSalud();
         EmpleadoOperativo salario2 = new EmpleadoOperativo();
         Nomina n1 = new Nomina();
+        Hospital h1 = new Hospital();
         double salarioTotal = n1.calcularTotalSalarios(salario, salario2);
         boolean estadoHospital = n1.presupuestoHospital();
 
-        System.out.println("total: " + salarioTotal+"estado hospital: "+estadoHospital);
+        System.out.println("total: " + salarioTotal + " \n estado hospital: " + estadoHospital);
+        System.out.println("Metodo del hospital: ");
+        h1.generarNomina();
         //String pathArchivo = "F:/Descargas/POO/NuevoPOO/HospitalSanJose/HospitalSanJose";
 
         //Hospital hospital = new Hospital();

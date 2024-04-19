@@ -181,15 +181,19 @@ public class Hospital {
     }
 
     ///////////////////////////////////////////////////////////////////////////
-
     //Metodos    
     
+    /**
+     * Metodo para cambiar el estado del hospital de ser necesario
+     */
     public void generarNomina (){
         Nomina nomina = new Nomina();
         if (nomina.presupuestoHospital() == false){
             this.setEstado(false);
+            System.out.println("Se cambio el estado a en quiebra: "+this.estado);
         }else{
             this.setEstado(true);
+            System.out.println("El estado sigue siendo activo: "+this.estado);
         } 
     }
     
