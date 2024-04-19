@@ -237,4 +237,24 @@ public class Hospital {
         }
     }
 
+    /**
+     * Registrar patrocina para intentar saldar deuda
+     *
+     * @param valorPatrocinio monto de patrocinio que le ingresa al hospital
+     */
+    public void registrarPatrocinio(double valorPatrocinio) {
+
+        if (valorPatrocinio < this.deuda) {
+            this.estado = true;
+            this.deuda = 0;
+            System.out.println("el valor del patrocinio que es: " + valorPatrocinio
+                    + "por lo tanto saldo la deuda de: " + this.deuda + " y el hospital vuelve a"
+                    + "estar activo ");
+        } else {
+            System.out.println("El valor de patrocinio ingresado es: " + valorPatrocinio
+                    + " y no es suficientepara cubrir la deuda de: " + this.deuda
+                    + "por lo cual el hospital sigue en quiebra");
+        }
+
+    }
 }
